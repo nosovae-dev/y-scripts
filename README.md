@@ -32,15 +32,19 @@ Alias for hybrisserver.sh in hybris platform
 Alias for hybris installer
 
 ### y-init
-Performs hybris initialize and analyses errors in logs. 
+Performs hybris initialize and analysis errors in logs.
+Prints errors and warning in case of there are any failures in logs and returns non-zero code in this case
+
+### y-unitinit
+Performs hybris junit tenant initialize and analysis errors in logs. 
 Prints errors and warning in case of there are any failures in logs and returns non-zero code in this case
 
 ### y-update
-Performs hybris update and analyses errors in logs. 
+Performs hybris update and analyses errors in logs.
 Prints errors and warning in case of there are any failures in logs and returns non-zero code in this case
 
 ### y-test
-Runs all hybris tests for custom extensions. Optionally can be passed parameter for filtering list of custom 
+Runs all hybris tests for custom extensions. Optionally can be passed parameter for filtering list of custom
 extensions (grep).
 ```bash
 y-test services

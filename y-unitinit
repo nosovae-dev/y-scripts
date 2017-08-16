@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Performs hybris initialize and analyses errors
+#
+# source: https://github.com/sergaks/y-scripts
+
+CONSOLE_OUTPUT_FILE="/tmp/hybris-init.log"
+
+y-ant yunitinit "$@" | tee "$CONSOLE_OUTPUT_FILE"
+
+FAILURES=`cat "$CONSOLE_OUTPUT_FILE" | sed -n "/Initialize system/,/FINISHED/p" | grep -e "WARN\|ERROR"`
+
+ERRORS=`echo "$FAILURES" | grep "ERROR"`
+
+if [ -n "$ERRORS" ]; then
+	echo "======================================"
+	echo "$FAILURES"
+	echo "======================================"
+    echo "FAILED (see errors and warnings above)"
+    exit 1
+else
+	echo "======================================"
+	echo "SUCCESS (no errors)"
+fi
