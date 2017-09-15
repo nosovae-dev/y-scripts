@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+y-ant clean all
+
